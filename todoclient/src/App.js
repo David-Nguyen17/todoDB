@@ -1,70 +1,45 @@
-import { Form, Input, Button, Space } from "antd";
 import React from "react";
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
-
+import { FaBeer } from "react-icons/fa";
+import { AiOutlineDown, AiOutlineClose } from "react-icons/ai";
+import "./App.css";
+import { IconContext } from "react-icons";
 const App = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
   return (
-    <Form
-      {...layout}
-      name="basic"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      <Space
+    <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h1>ToDo DB</h1>
+      </div>
+      <div
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
         }}
       >
-        <Form.Item
-          label="Todo"
-          name="todo"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
+        <div
+          style={{
+            width: 300,
+            height: 50,
+            border: "1px solid black",
+            borderRadius: 6,
+            alignItems: "center",
+            justifyContent: "center",
+            display: "flex",
+          }}
         >
-          <Input />
-        </Form.Item>
+          <AiOutlineDown />
+          <input
+            className="inlineFocus"
+            type="text"
+            placeholder="What needs to be done?"
+            style={{ border: "none" }}
+          />
 
-        <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Space>
-      <div>
-        <h1 style={{ textAlign: "center" }}>Hello My Friends</h1>
+          <IconContext.Provider value={{ color: "red" }}>
+            <AiOutlineClose />
+          </IconContext.Provider>
+        </div>
       </div>
-    </Form>
+    </div>
   );
 };
 export default App;
